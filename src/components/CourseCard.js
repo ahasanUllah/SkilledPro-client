@@ -1,11 +1,12 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
+import { Link, Navigate } from 'react-router-dom';
 
 const CourseCard = ({course}) => {
   const {title, id, image, rating, lavel, instructor, price} = course
     return (
-     
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
+     <Link to={`/course/${id}`}>
+      <div  className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
           <img
             src={image}
             className="object-cover w-full h-64"
@@ -15,9 +16,7 @@ const CourseCard = ({course}) => {
             <p className="mb-3 text-left  bg-green-200 inline p-2 text-xs font-semibold tracking-wide uppercase">
               {lavel}
             </p>
-            <p
-              
-              
+            <p                         
               className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700 text-left"
             >
               {title}
@@ -26,9 +25,7 @@ const CourseCard = ({course}) => {
              {instructor}
             </p>
 
-            <p
-              
-             
+            <p                         
               className="inline-flex items-center font-bold transition-colors duration-200 text-xl text-gray-700"
             >
               ${price}.<small className='mt-1'>99</small>
@@ -49,9 +46,7 @@ const CourseCard = ({course}) => {
             </p>
           </div>
         </div>
-        
-        
-      
+     </Link> 
   
     );
 };
