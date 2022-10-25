@@ -1,130 +1,58 @@
 import React from 'react';
+import { FaStar } from 'react-icons/fa';
 
-const CourseCard = () => {
+const CourseCard = ({course}) => {
+  const {title, id, image, rating, lavel, instructor, price} = course
     return (
-        <div>
-            <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-      <div className="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
+     
         <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
           <img
-            src="https://images.pexels.com/photos/2408666/pexels-photo-2408666.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500"
+            src={image}
             className="object-cover w-full h-64"
             alt=""
           />
-          <div className="p-5 border border-t-0">
-            <p className="mb-3 text-xs font-semibold tracking-wide uppercase">
-              <a
-                href="/"
-                className="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700"
-                aria-label="Category"
-                title="traveling"
-              >
-                traveling
-              </a>
-              <span className="text-gray-600">— 28 Dec 2020</span>
+          <div className="p-5 border border-t-0 flex flex-col justify-start items-start">
+            <p className="mb-3 text-left  bg-green-200 inline p-2 text-xs font-semibold tracking-wide uppercase">
+              {lavel}
             </p>
-            <a
-              href="/"
-              aria-label="Category"
-              title="Visit the East"
-              className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
+            <p
+              
+              
+              className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700 text-left"
             >
-              Visit the East
-            </a>
-            <p className="mb-2 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
+              {title}
             </p>
-            <a
-              href="/"
-              aria-label=""
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+            <p className="mb-2 text-gray-700 text-left">
+             {instructor}
+            </p>
+
+            <p
+              
+             
+              className="inline-flex items-center font-bold transition-colors duration-200 text-xl text-gray-700"
             >
-              Learn more
-            </a>
+              ${price}.<small className='mt-1'>99</small>
+            </p>
+            <p
+              
+             
+              className="inline-flex items-center font-semibold transition-colors duration-200 text-lg"
+            >
+              <FaStar className='text-yellow-500' />
+              <FaStar className='text-yellow-500' />
+              <FaStar className='text-yellow-500' />
+              <FaStar className='text-yellow-500' />
+              <FaStar className='text-yellow-500' />
+              <FaStar className='text-yellow-500' />
+              <span className='text-md text-gray-400 ml-1'>  ({rating})</span>
+             
+            </p>
           </div>
         </div>
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
-          <img
-            src="https://images.pexels.com/photos/447592/pexels-photo-447592.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-            className="object-cover w-full h-64"
-            alt=""
-          />
-          <div className="p-5 border border-t-0">
-            <p className="mb-3 text-xs font-semibold tracking-wide uppercase">
-              <a
-                href="/"
-                className="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700"
-                aria-label="Category"
-                title="traveling"
-              >
-                traveling
-              </a>
-              <span className="text-gray-600">— 28 Dec 2020</span>
-            </p>
-            <a
-              href="/"
-              aria-label="Category"
-              title="Simple is better"
-              className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
-            >
-              Simple is better
-            </a>
-            <p className="mb-2 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
-            </p>
-            <a
-              href="/"
-              aria-label=""
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-            >
-              Learn more
-            </a>
-          </div>
-        </div>
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
-          <img
-            src="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-            className="object-cover w-full h-64"
-            alt=""
-          />
-          <div className="p-5 border border-t-0">
-            <p className="mb-3 text-xs font-semibold tracking-wide uppercase">
-              <a
-                href="/"
-                className="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700"
-                aria-label="Category"
-                title="traveling"
-              >
-                traveling
-              </a>
-              <span className="text-gray-600">— 28 Dec 2020</span>
-            </p>
-            <a
-              href="/"
-              aria-label="Category"
-              title="Film It!"
-              className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
-            >
-              Film It!
-            </a>
-            <p className="mb-2 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
-            </p>
-            <a
-              href="/"
-              aria-label=""
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-            >
-              Learn more
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-        </div>
+        
+        
+      
+  
     );
 };
 
