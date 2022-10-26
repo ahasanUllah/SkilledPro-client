@@ -48,8 +48,8 @@ const CourseDetails = () => {
 		</div>
 	</div>
 </section>
-        <div className='grid grid-cols-5 container mx-auto'>
-            <div className='col-span-4 space-y-6 p-20'>
+        <div className='grid grid-cols-1 md:grid-cols-5 container mx-auto'>
+            <div className='col-span-1 md:col-span-4 space-y-6 p-20'>
                 <h1 className='text-2xl font-semibold text-center'>About Our Course</h1>
                 <p className='max-w-4xl mx-auto text-sm text-gray-500'>{courses.description}</p>
             </div>

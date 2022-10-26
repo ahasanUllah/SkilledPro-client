@@ -81,24 +81,19 @@ const Header = () => {
 			<li>
 				{user?.uid ?
 				<div className='flex'>
-				<img className='w-10 rounded-full mr-3' title={user.displayName} src={user.photoURL} alt="" /> 
+				<img className='w-10 rounded-full mr-3' title={user?.displayName || user?.reloadUserInfo?.screenName} src={user.photoURL} alt="" /> 
 				 <button className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' onClick={handleLogOut}>Logout</button>
 				 </div>
 				 : 
+				 <>
 				 <Link
 				 to="/login"
 				 title="Sign in"
-				 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+				 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 mr-4"
 			   >
 				 Sign in
 			   </Link>
-}
-			</li>
-			<li>
-			 
-			</li>
-			<li>
-			  <Link
+			   <Link
 				to="/register"
 				className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
 				aria-label="Sign up"
@@ -106,6 +101,14 @@ const Header = () => {
 			  >
 				Sign up
 			  </Link>
+				 </>
+}
+			</li>
+			<li>
+			 
+			</li>
+			<li>
+			  
 			</li>
 		  </ul>
 		  <div className="lg:hidden">
@@ -220,26 +223,33 @@ const Header = () => {
 	<span>Right</span>
 </label>
 					  </li>
+					  
 					  <li>
-						<Link
-						  to="/login"
-						  aria-label="Sign in"
-						  title="Sign in"
-						  className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-						>
-						  Sign in
-						</Link>
-					  </li>
-					  <li>
-						<Link
-						  to="/register"
-						  className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-						  aria-label="Sign up"
-						  title="Sign up"
-						>
-						  Sign up
-						</Link>
-					  </li>
+				{user?.uid ?
+				<div className='flex'>
+				<img className='w-10 rounded-full mr-3' title={user?.displayName || user?.reloadUserInfo?.screenName} src={user.photoURL} alt="" /> 
+				 <button className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' onClick={handleLogOut}>Logout</button>
+				 </div>
+				 : 
+				 <>
+				 <Link
+				 to="/login"
+				 title="Sign in"
+				 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 mr-4"
+			   >
+				 Sign in
+			   </Link>
+			   <Link
+				to="/register"
+				className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+				aria-label="Sign up"
+				title="Sign up"
+			  >
+				Sign up
+			  </Link>
+				 </>
+}
+			</li>
 					</ul>
 				  </nav>
 				</div>
