@@ -18,6 +18,7 @@ const Register = () => {
       createNewUser(email, password)
          .then((result) => {
             const user = result.user;
+
             //update user
             updateUser(fullName, photoUrl).then(() => {
                setDisplayError('');
@@ -100,6 +101,7 @@ const Register = () => {
                      id="email"
                      placeholder="Email"
                      className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+                     required
                   />
                </div>
                <div className="space-y-1 text-sm">
@@ -112,6 +114,7 @@ const Register = () => {
                      id="password"
                      placeholder="Password"
                      className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+                     required
                   />
                   <div className="flex justify-end text-xs text-gray-600">
                      <a rel="noopener noreferrer" href="/">
