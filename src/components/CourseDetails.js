@@ -1,9 +1,13 @@
+
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import React from 'react';
 import { FaCloudDownloadAlt, FaStar } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
+import MyDocument from './MyDocument';
+
 
 const CourseDetails = () => {
-    const courses = useLoaderData()
+    const courses = useLoaderData([])
     console.log(courses);
     return (
         <div>
@@ -12,7 +16,13 @@ const CourseDetails = () => {
                 <section className="bg-gray-100 text-gray-800">
 	<div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
 		<div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-3xl lg:text-left ">
-			<h1 className="text-xl font-bold leading-none sm:text-3xl mb-6">{courses.title} <button type="button" className="px-3 py-1"> <FaCloudDownloadAlt className='text-blue-600'/> </button>
+			<h1 className="text-xl font-bold leading-none sm:text-3xl mb-6">{courses.title} 
+
+			 <PDFDownloadLink document={<MyDocument courses={courses}/>} filename="FORM">
+      {({loading}) => (loading ? <button><FaCloudDownloadAlt /></button> : <button type="button" className="px-3 py-1"> <FaCloudDownloadAlt className='text-blue-600'/>		
+			 </button> )}
+      </PDFDownloadLink>
+      {/* <PDFFile /> */}
 			</h1>
 			
 			<div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
@@ -69,6 +79,7 @@ const CourseDetails = () => {
 		</div>
 		
 	</nav>
+	
 </aside>
             </div>
         </div>
