@@ -43,9 +43,13 @@ const Blog = () => {
                <div className="mt-24">
                   <h1 className="text-2xl font-bold hover:underline">What is Node? How does Node work?</h1>
                   <p className="mt-2">
-                     The react private route component renders child components if the user is logged in. If the user is
-                     not logged in the user is redirected to the login page with the return url passed in the location
-                     state which can be used to redirect user where he tries to visit before
+                     Node.js is an open-source, cross-platform javascript runtime environment and library for running
+                     web application outside the clients browser. Developer use Node.js to create server-side web
+                     application. Node JS uses an event-driven, non-blocking I/O model that makes it lightweight and
+                     efficient. Node JS applications uses single threaded event loop architecture to handle concurrent
+                     clients. Actually its' main event loop is single threaded but most of the I/O works on separate
+                     threads, because the I/O APIs in Node JS are asynchronous/non-blocking by design, in order to
+                     accommodate the main event loop.
                   </p>
                </div>
             </div>

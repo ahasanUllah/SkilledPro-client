@@ -4,6 +4,7 @@ import Checkout from '../Checkout';
 import Course from '../Course';
 import CourseDetails from '../CourseDetails';
 import ErrorPage from '../ErrorPage';
+import Faq from '../Faq';
 
 import Home from '../Home';
 import Main from '../layout/Main';
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
          {
             path: '/blog',
             element: <Blog></Blog>,
+         },
+         {
+            path: 'faq',
+            element: <Faq></Faq>,
          },
       ],
    },
