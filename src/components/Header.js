@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGraduationCap } from "react-icons/fa";
+import { AuthContext } from './context/AuthProvider';
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const {user, logoutUser} = useContext(AuthContext)
+
+	const handleLogOut = () => {
+		logoutUser()
+		.then(() => {
+			console.log('logout successfull');
+		})
+		.catch(error => {
+			console.log(error);
+		})
+	}
 
     return (
 		<div className='bg-gray-50'>
@@ -67,14 +79,23 @@ const Header = () => {
 		  </div>
 		  <ul className="flex items-center hidden space-x-8 lg:flex">
 			<li>
-			  <Link
-				to="/login"
-				aria-label="Sign in"
-				title="Sign in"
-				className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-			  >
-				Sign in
-			  </Link>
+				{user?.uid ?
+				<div className='flex'>
+				<img className='w-10 rounded-full mr-3' title={user.displayName} src={user.photoURL} alt="" /> 
+				 <button className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' onClick={handleLogOut}>Logout</button>
+				 </div>
+				 : 
+				 <Link
+				 to="/login"
+				 title="Sign in"
+				 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+			   >
+				 Sign in
+			   </Link>
+}
+			</li>
+			<li>
+			 
 			</li>
 			<li>
 			  <Link
