@@ -8,7 +8,7 @@ import MyDocument from './MyDocument';
 
 const CourseDetails = () => {
     const courses = useLoaderData([])
-	console.log(courses);
+
 	const navigate = useNavigate()
 
 	const handlePremiumAccess = () => {
