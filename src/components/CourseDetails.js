@@ -2,13 +2,18 @@
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import React from 'react';
 import { FaCloudDownloadAlt, FaStar } from 'react-icons/fa';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import MyDocument from './MyDocument';
 
 
 const CourseDetails = () => {
     const courses = useLoaderData([])
-    console.log(courses);
+	console.log(courses);
+	const navigate = useNavigate()
+
+	const handlePremiumAccess = () => {
+		navigate(`/checkout/${courses.id}`)
+	}
     return (
         <div>
             
@@ -72,7 +77,7 @@ const CourseDetails = () => {
 			</div>
 		</div>
 		<div className="space-y-2">
-        <button type="button" className="px-8 py-3 font-semibold rounded bg-blue-600 text-gray-100">Get Premium</button>
+        <button onClick={handlePremiumAccess} type="button" className="px-8 py-3 font-semibold rounded bg-blue-600 text-gray-100">Get Premium Access</button>
 			<div className="flex flex-col space-y-1">
 				
 			</div>

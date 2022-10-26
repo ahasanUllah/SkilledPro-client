@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
-import { Link, Navigate } from 'react-router-dom';
+import { Link,  } from 'react-router-dom';
 
 const CourseCard = ({course}) => {
   const {title, id, image, rating, lavel, instructor, price} = course

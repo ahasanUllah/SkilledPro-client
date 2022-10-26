@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import React from 'react';
+import {  useLoaderData } from 'react-router-dom';
 import CourseCard from './CourseCard';
 import SideBar from './SideBar';
 
