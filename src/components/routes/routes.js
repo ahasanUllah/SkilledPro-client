@@ -20,12 +20,12 @@ export const router = createBrowserRouter([
          {
             path: '/course',
             element: <Course></Course>,
-            loader: () => fetch('http://localhost:5000/course/'),
+            loader: () => fetch('https://skilled-pro-server.vercel.app/course/'),
          },
          {
             path: '/course/:id',
             element: <CourseDetails></CourseDetails>,
-            loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
+            loader: ({ params }) => fetch(`https://skilled-pro-server.vercel.app/course/${params.id}`),
          },
          {
             path: '/checkout/:id',
@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
                   <Checkout></Checkout>
                </PrivateRoute>
             ),
-            loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
+            loader: ({ params }) => fetch(`https://skilled-pro-server.vercel.app/course/${params.id}`),
          },
          {
             path: '/login',
