@@ -1,80 +1,85 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth'
+import {
+   createUserWithEmailAndPassword,
+   getAuth,
+   GithubAuthProvider,
+   GoogleAuthProvider,
+   onAuthStateChanged,
+   signInWithEmailAndPassword,
+   signInWithPopup,
+   signOut,
+   updateProfile,
+} from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 
+export const AuthContext = createContext();
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
-export const AuthContext = createContext()
-const auth = getAuth(app)
-const provider = new GoogleAuthProvider()
-const githubProvider = new GithubAuthProvider()
+const AuthProvider = ({ children }) => {
+   const [user, setUser] = useState([]);
+   const [displayError, setDisplayError] = useState('');
+   const [loading, setLoading] = useState(true);
+   //Create User
+   const createNewUser = (email, password) => {
+      setLoading(true);
+      return createUserWithEmailAndPassword(auth, email, password);
+   };
 
+   //Update FullName and Photo url
+   const updateUser = (name, photoUrl) => {
+      return updateProfile(auth.currentUser, {
+         displayName: name,
+         photoURL: photoUrl,
+      });
+   };
 
-const AuthProvider = ({children}) => {
-    const [user, setUser] = useState([])
-    const [displayError, setDisplayError] = useState('')
-    const [loading, setLoading] = useState(true)
-    //Create User 
-    const createNewUser = (email, password) => {
-        setLoading(true)
-       return createUserWithEmailAndPassword(auth, email, password)
-    }
+   //Login with email password
+   const userLogin = (email, password) => {
+      setLoading(true);
+      return signInWithEmailAndPassword(auth, email, password);
+   };
 
-    //Update FullName and Photo url
-    const updateUser = (name, photoUrl) => {
-       return updateProfile(auth.currentUser, {
-            displayName: name, photoURL: photoUrl
-          })
-    }
+   //Google Login
+   const googleLogin = () => {
+      setLoading(true);
+      return signInWithPopup(auth, provider);
+   };
 
-    //Login with email password
-    const userLogin = (email, password) => {
-        setLoading(true)
-       return signInWithEmailAndPassword(auth, email, password)
-    }
+   //Github Login
+   const githubLogin = () => {
+      setLoading(true);
+      return signInWithPopup(auth, githubProvider);
+   };
 
-    //Google Login
-    const googleLogin = () => {
-        setLoading(true)
-        return signInWithPopup(auth, provider)
-    }
+   //Logout
+   const logoutUser = () => {
+      return signOut(auth);
+   };
 
-    //Github Login
-    const githubLogin = () => {
-        setLoading(true)
-      return  signInWithPopup(auth, githubProvider)
-    }
+   useEffect(() => {
+      const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+         setUser(currentUser);
 
-    //Logout
-    const logoutUser = () => {
-        return signOut(auth)
-    }
+         setLoading(false);
+      });
+      return () => unSubscribe();
+   }, []);
 
-    useEffect(() => {
-       const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser)
-            console.log('currentUser', currentUser);
-            setLoading(false)
-        })
-        return () => unSubscribe()
-    }, [])
-
-    const authInfo = {
-        user,
-        googleLogin,
-        createNewUser,
-        userLogin,
-        updateUser,
-        logoutUser, 
-        githubLogin, 
-        displayError,
-        setDisplayError,
-        loading
-    }
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider>
-    );
+   const authInfo = {
+      user,
+      googleLogin,
+      createNewUser,
+      userLogin,
+      updateUser,
+      logoutUser,
+      githubLogin,
+      displayError,
+      setDisplayError,
+      loading,
+   };
+   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;
