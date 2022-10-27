@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from './context/ThemeProvider';
 
 const Home = () => {
+   const { theme, setTheme } = useContext(ThemeContext);
+   console.log(theme);
+   const handleTheme = () => {
+      setTheme(theme === 'dark' ? 'light' : 'dark');
+   };
    return (
-      <div>
-         <div className="relative">
+      <div className="dark:bg-gray-900">
+         <div className="relative ">
             <img
                src="https://images.pexels.com/photos/3747463/pexels-photo-3747463.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
                className="absolute inset-0 object-cover w-full h-full"
@@ -36,7 +42,7 @@ const Home = () => {
                         </Link>
                      </div>
                      <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
-                        <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
+                        <div className="bg-white  rounded shadow-2xl p-7 sm:p-10">
                            <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                               Subscribe for news letter
                            </h3>

@@ -7,21 +7,15 @@ const Checkout = () => {
    return (
       <div className="mt-12">
          <section>
-            <h1 className="text-center text-4xl mb-10">Checkout</h1>
+            <h1 className="text-center text-4xl mb-10 dark:text-gray-300">Checkout</h1>
 
             <div className="relative mx-auto max-w-screen-2xl">
                <div className="grid grid-cols-1 md:grid-cols-2">
-                  <div className="bg-gray-50 py-12 md:py-24">
-                     <div className="mx-auto max-w-lg px-4 lg:px-8">
-                        <div className="flex items-center">
-                           <span className="h-10 w-10 rounded-full bg-blue-900"></span>
-
-                           <h2 className="ml-4 font-medium">BambooYou</h2>
-                        </div>
-
+                  <div className="bg-gray-50 py-12 md:py-24 dark:bg-gray-800 ">
+                     <div className="mx-auto max-w-lg px-4 lg:px-8 ">
                         <div className="mt-8">
-                           <p className="text-2xl font-medium tracking-tight">${courses.price}</p>
-                           <p className="mt-1 text-sm text-gray-500">For the purchase of</p>
+                           <p className="text-2xl font-medium tracking-tight dark:text-gray-200">${courses.price}</p>
+                           <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">For the purchase of</p>
                         </div>
 
                         <div className="mt-12">
@@ -36,9 +30,9 @@ const Checkout = () => {
                                        />
 
                                        <div className="ml-4">
-                                          <p className="text-sm">{courses.title}</p>
+                                          <p className="text-sm dark:text-gray-300">{courses.title}</p>
 
-                                          <dl className="mt-1 space-y-1 text-xs text-gray-500">
+                                          <dl className="mt-1 space-y-1 text-xs text-gray-500 dark:text-gray-300">
                                              <div>
                                                 <dt className="inline">instructor: </dt>
                                                 <dd className="inline">{courses.instructor}</dd>
@@ -53,9 +47,9 @@ const Checkout = () => {
                                     </div>
 
                                     <div>
-                                       <p className="text-sm">
+                                       <p className="text-md dark:text-gray-300">
                                           ${courses.price}
-                                          <small className="text-gray-500">x1</small>
+                                          <small className="text-gray-500 dark:text-gray-300">x1</small>
                                        </p>
                                     </div>
                                  </li>

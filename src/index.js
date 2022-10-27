@@ -6,16 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import AuthProvider from './components/context/AuthProvider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ThemeProvider from './components/context/ThemeProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <AuthProvider>
-    <ToastContainer />
-    <App />
-
-    </AuthProvider>
-  </React.StrictMode>
+   <React.StrictMode>
+      <AuthProvider>
+         <ThemeProvider>
+            <ToastContainer />
+            <App />
+         </ThemeProvider>
+      </AuthProvider>
+   </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

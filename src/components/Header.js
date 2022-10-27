@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { FaGraduationCap } from 'react-icons/fa';
 import { AuthContext } from './context/AuthProvider';
 import { toast } from 'react-toastify';
+import { ThemeContext } from './context/ThemeProvider';
 
 const Header = () => {
    const [isMenuOpen, setIsMenuOpen] = useState(false);
    const { user, logoutUser } = useContext(AuthContext);
+   const { theme, setTheme } = useContext(ThemeContext);
 
    const handleLogOut = () => {
       logoutUser()
@@ -18,21 +20,27 @@ const Header = () => {
          });
    };
 
+   const handleToggle = (e) => {
+      setTheme(theme === 'dark' ? 'light' : 'dark');
+   };
+
    return (
-      <div className="bg-gray-50">
+      <div className="bg-gray-50 dark:bg-gray-800">
          <div className=" px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 z-50">
             <div className="relative flex items-center justify-between">
                <div className="flex items-center">
                   <Link to="/" aria-label="Company" title="Company" className="inline-flex items-center mr-8">
                      <FaGraduationCap className="text-4xl text-blue-600" />
-                     <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">SkilledPro</span>
+                     <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 dark:text-gray-200 uppercase">
+                        SkilledPro
+                     </span>
                   </Link>
                   <ul className="flex items-center hidden space-x-8 lg:flex">
                      <li>
                         <Link
                            to="/course"
                            title="Courses"
-                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                           className="font-medium tracking-wide text-gray-700 dark:text-gray-200 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
                            Course
                         </Link>
@@ -41,7 +49,7 @@ const Header = () => {
                         <Link
                            to="/faq"
                            title="FAQ"
-                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                           className="font-medium tracking-wide text-gray-700 dark:text-gray-200 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
                            FAQ
                         </Link>
@@ -51,23 +59,24 @@ const Header = () => {
                            to="/blog"
                            aria-label=" Blog"
                            title=" Blog"
-                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                           className="font-medium tracking-wide text-gray-700 dark:text-gray-200 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
                            Blog
                         </Link>
                      </li>
                      <li>
+                        {/* Theme Toggler */}
                         <label
                            htmlFor="Toggle1"
                            className="inline-flex items-center space-x-4 cursor-pointer text-gray-800"
                         >
-                           <span>Dark</span>
+                           <span className="dark:text-white">Light</span>
                            <span className="relative">
-                              <input id="Toggle1" type="checkbox" className="hidden peer" />
-                              <div className="w-10 h-6 rounded-full shadow-inner bg-gray-600 peer-checked:bg-blue-600"></div>
+                              <input id="Toggle1" type="checkbox" className="hidden peer" onClick={handleToggle} />
+                              <div className="w-10 h-6 rounded-full shadow-inner bg-blue-600 peer-checked:bg-gray-600"></div>
                               <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-gray-100"></div>
                            </span>
-                           <span>Light</span>
+                           <span className="dark:text-white">Dark</span>
                         </label>
                      </li>
                   </ul>
@@ -83,7 +92,7 @@ const Header = () => {
                               alt=""
                            />
                            <button
-                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                              className="font-medium tracking-wide text-gray-700 dark:text-gray-200 transition-colors duration-200 hover:text-deep-purple-accent-400"
                               onClick={handleLogOut}
                            >
                               Logout
@@ -94,7 +103,7 @@ const Header = () => {
                            <Link
                               to="/login"
                               title="Sign in"
-                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 mr-4"
+                              className="font-medium tracking-wide text-gray-700 dark:text-gray-200 transition-colors duration-200 hover:text-deep-purple-accent-400 mr-4"
                            >
                               Sign in
                            </Link>
@@ -182,7 +191,7 @@ const Header = () => {
                                     <Link
                                        to="/course"
                                        title="Courses"
-                                       className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                       className="font-medium tracking-wide text-gray-700 dark:text-gray-200 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                     >
                                        Course
                                     </Link>
@@ -192,7 +201,7 @@ const Header = () => {
                                        to="/faq"
                                        aria-label="Our product"
                                        title="Our product"
-                                       className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                       className="font-medium tracking-wide text-gray-700 dark:text-gray-200 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                     >
                                        FAQ
                                     </Link>
@@ -202,7 +211,7 @@ const Header = () => {
                                        to="/"
                                        aria-label="Product Blog"
                                        title="Blog"
-                                       className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                       className="font-medium tracking-wide text-gray-700 dark:text-gray-200 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                     >
                                        Blog
                                     </Link>
@@ -232,7 +241,7 @@ const Header = () => {
                                              alt=""
                                           />
                                           <button
-                                             className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                             className="font-medium tracking-wide text-gray-700 dark:text-gray-200 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                              onClick={handleLogOut}
                                           >
                                              Logout
@@ -243,7 +252,7 @@ const Header = () => {
                                           <Link
                                              to="/login"
                                              title="Sign in"
-                                             className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 mr-4"
+                                             className="font-medium tracking-wide text-gray-700 dark:text-gray-200 transition-colors duration-200 hover:text-deep-purple-accent-400 mr-4"
                                           >
                                              Sign in
                                           </Link>
