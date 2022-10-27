@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SideBar = ({ courses }) => {
    return (
@@ -11,7 +12,9 @@ const SideBar = ({ courses }) => {
                   </h2>
                   <div className="flex flex-col space-y-5">
                      {courses.map((course) => (
-                        <p key={course.id}>{course.title}</p>
+                        <Link to={`/course/${course.id}`} key={course.id}>
+                           {course.title}
+                        </Link>
                      ))}
                   </div>
                </div>
